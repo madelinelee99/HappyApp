@@ -47,7 +47,7 @@ public class WeatherFragment extends Fragment {
 
         @Subscribe(threadMode = ThreadMode.MAIN)
         public void onEventMainThread(WeatherResult weatherResult) {
-            tvResult.setText("The weather today is: " + weatherResult.getWeather().get(0).getDescription());
+            tvResult.setText("The weather today is: " + "\n" + weatherResult.getWeather().get(0).getDescription());
             String iconName = weatherResult.getWeather().get(0).getIcon();
             Glide.with(this).load("http://openweathermap.org/img/w/" + iconName + ".png").into(ivWeather);
         }

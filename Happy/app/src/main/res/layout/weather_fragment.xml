@@ -15,8 +15,8 @@
     <ImageView
         android:id="@+id/ivWeather"
         android:textSize="22sp"
-        android:layout_width="168dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher"
         android:layout_gravity="center_horizontal" />
@@ -32,8 +32,8 @@
     <ImageView
         android:id="@+id/ivIdea"
         android:textSize="22sp"
-        android:layout_width="168dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher"
         android:layout_gravity="center_horizontal" />
