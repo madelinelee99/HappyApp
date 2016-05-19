@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
+
     <TextView
         android:id="@+id/tvResult"
         android:textSize="22sp"
@@ -18,15 +19,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/ic_launcher_weather"
         android:layout_gravity="center_horizontal" />
 
-    <TextView
+
+
+        <TextView
         android:id="@+id/tvIdea"
         android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Read a book inside"
+        android:text="What should I do depending on the weather?"
         android:layout_gravity="center_horizontal" />
 
     <ImageView
@@ -35,8 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_wb_incandescent_black_24dp"
         android:layout_gravity="center_horizontal" />
+
 
 
 </LinearLayout>

@@ -55,9 +55,9 @@ public class DetailsFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(WeatherResult weatherResult) {
-        tvTemp.setText("Temperature "+weatherResult.getMain().getTemp());
-        tvTempMin.setText("Minimum Temperature "+weatherResult.getMain().getTempMin());
-        tvTempMax.setText("Maximum Temperature "+weatherResult.getMain().getTempMax());
+        tvTemp.setText("Temperature "+weatherResult.getMain().getTemp()+" C");
+        tvTempMin.setText("Minimum Temperature "+weatherResult.getMain().getTempMin()+" C");
+        tvTempMax.setText("Maximum Temperature "+weatherResult.getMain().getTempMax()+" C");
         tvPressure.setText("Pressure "+weatherResult.getMain().getPressure());
         tvHumidity.setText("Humidity "+weatherResult.getMain().getHumidity());
         tvSeaLevel.setText("Sea Level "+weatherResult.getMain().getSeaLevel());
