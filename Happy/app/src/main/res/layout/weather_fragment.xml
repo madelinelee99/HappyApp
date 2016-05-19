@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather Forecast"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:id="@+id/ivWeather"
+        android:textSize="22sp"
+        android:layout_width="168dp"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/tvIdea"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read a book inside"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:id="@+id/ivIdea"
+        android:textSize="22sp"
+        android:layout_width="168dp"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>
