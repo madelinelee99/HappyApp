@@ -9,13 +9,29 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import hu.ait.android.happy.adapter.TodoAdapter;
+import hu.ait.android.happy.adapter.TodoItemTouchHelperCallback;
+import hu.ait.android.happy.data.Todo;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    public static final int REQUEST_CODE_ADD_ITEM = 101;
+    public static final int REQUEST_CODE_EDIT_ITEM = 102;
+    public static final String KEY_EDIT = "KEY_EDIT";
+
+    private TodoAdapter todoRecyclerAdapter;
+    private Todo itemToEditHolder;
+    private int itemToEditPosition = -1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +40,33 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
+        todoRecyclerAdapter = new TodoAdapter(this);
+
+
+        final RecyclerView recyclerView =
+                (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(todoRecyclerAdapter);
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                showAddItemActivity();
             }
         });
+
+        ItemTouchHelper.Callback callback =
+                new TodoItemTouchHelperCallback(todoRecyclerAdapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(recyclerView);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -46,6 +81,68 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private void showAddItemActivity() {
+        Intent intentAddItem = new Intent(MainActivity.this, AddItem.class);
+        startActivityForResult(intentAddItem,
+                REQUEST_CODE_ADD_ITEM);
+    }
+
+    private void showWeatherActivity() {
+        Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+        MainActivity.this.startActivity(intent);
+    }
+
+    public void showEditTodoActivity(Todo itemToEdit, int position) {
+        Intent intentEditTodo = new Intent(MainActivity.this,
+                AddItem.class);
+        itemToEditHolder = itemToEdit;
+        itemToEditPosition = position;
+
+        intentEditTodo.putExtra(KEY_EDIT, itemToEdit);
+        startActivityForResult(intentEditTodo, REQUEST_CODE_EDIT_ITEM);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode) {
+            case RESULT_OK:
+                if (requestCode == REQUEST_CODE_ADD_ITEM) {
+                    Todo item = (Todo) data.getSerializableExtra(
+                            AddItem.KEY_ITEM);
+
+                    Toast.makeText(MainActivity.this, "item added", Toast.LENGTH_SHORT).show();
+
+                    todoRecyclerAdapter.addTodo(item);
+
+                } else if (requestCode == REQUEST_CODE_EDIT_ITEM) {
+                    Todo itemTemp = (Todo) data.getSerializableExtra(
+                            AddItem.KEY_ITEM);
+
+                    itemToEditHolder.setName(itemTemp.getName());
+                    itemToEditHolder.setDate(itemTemp.getDate());
+                    itemToEditHolder.setLocation(itemTemp.getLocation());
+                    itemToEditHolder.setItemType(itemTemp.getItemType());
+                    itemToEditHolder.setDone(itemTemp.isDone());
+
+
+                    if (itemToEditPosition != -1) {
+                        todoRecyclerAdapter.updateItem(itemToEditPosition, itemToEditHolder);
+                        itemToEditPosition = -1;
+                    } else {
+                        todoRecyclerAdapter.notifyDataSetChanged();
+                    }
+
+                }
+                break;
+            case RESULT_CANCELED:
+
+                break;
+
+
+        }
+
+
+    }
 
 
     @Override
@@ -80,29 +177,34 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_addItem) {
 
-        } else if (id == R.id.nav_slideshow) {
+            Toast.makeText(MainActivity.this, "Add an item", Toast.LENGTH_SHORT).show();
+            showAddItemActivity();
+        } else if (id == R.id.nav_alarm) {
+            //go to alarm activity
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_recommended) {
+//go to recommendation activity
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_weather) {
+          showWeatherActivity();
         }
-        else if (id == R.id.nav_weather) {
-            Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-            MainActivity.this.startActivity(intent);
+
+        else if (id == R.id.nav_profile) {
+      //go to profile activity
         }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
