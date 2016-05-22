@@ -31,9 +31,28 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
         android:id="@+id/alarmText"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/alarmToggle"/>
+
+    <Button
+        android:id="@+id/btnAlarmDone"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:text="@string/btnDoneText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/alarmText"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnAlarmCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/alarmText"
+        android:text="@string/btnAlarmCancel"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

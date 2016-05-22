@@ -100,6 +100,11 @@ public class MainActivity extends AppCompatActivity
         startActivityForResult(intentEditTodo, REQUEST_CODE_EDIT_ITEM);
     }
 
+    private void showAlarmActivity() {
+        Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+        MainActivity.this.startActivity(intent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (resultCode) {
@@ -188,6 +193,7 @@ public class MainActivity extends AppCompatActivity
                 showAddItemActivity();
             } else if (id == R.id.nav_alarm) {
                 //go to alarm activity
+                showAlarmActivity();
 
             } else if (id == R.id.nav_recommended) {
 //go to recommendation activity

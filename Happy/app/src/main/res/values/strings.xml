@@ -11,4 +11,6 @@
     <string name="quote5Text">I have chosen to be happy because it is good for my health.</string>
     <string name="quote6Text">Health is a state of body. Wellness is a state of being.</string>
     <string name="txt_error_empty">This field can\'t be empty</string>
+    <string name="btnDoneText">Done</string>
+    <string name="btnAlarmCancel">Cancel</string>
 </resources>
