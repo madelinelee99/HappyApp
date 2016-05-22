@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class WeatherActivity extends ActionBarActivity {
     public static final String KEY_COORD = "KEY_COORD";
     private String coordName = "lat=35&lon=139";
     private Context context;
+    private PagerTitleStrip ptsTop;
 
 
     @Override
@@ -41,6 +43,9 @@ public class WeatherActivity extends ActionBarActivity {
 
         pager.setAdapter(adapter);
 
+        ptsTop = (PagerTitleStrip) findViewById(R.id.ptsTop);
+//        ptsTop.setTextSpacing(20);
+
         if (getIntent() != null && getIntent().hasExtra(KEY_COORD)) {
             coordName = getIntent().getStringExtra(KEY_COORD);
         }
@@ -50,8 +55,6 @@ public class WeatherActivity extends ActionBarActivity {
     public static final int REQUEST_CODE_LOCATION_PERMISSION = 401;
     private MyLocationManager locationManager;
     private String coordinates;
-
-
 
 
     public void requestNeededPermission() {

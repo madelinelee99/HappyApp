@@ -171,12 +171,6 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -188,16 +182,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
             if (id == R.id.nav_addItem) {
-
-                Toast.makeText(MainActivity.this, "Add an item", Toast.LENGTH_SHORT).show();
-                showAddItemActivity();
+                //will close draw at end, so no additional action
             } else if (id == R.id.nav_alarm) {
                 //go to alarm activity
                 showAlarmActivity();
-
-            } else if (id == R.id.nav_recommended) {
-//go to recommendation activity
-
             } else if (id == R.id.nav_weather) {
                 showWeatherActivity();
             } else if (id == R.id.nav_profile) {

@@ -97,10 +97,10 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>
 
                 // we will save/update todo object in the DataBase here
 
-                Toast.makeText(context,
-                        todo.getName() + ": " +
-                                todo.isDone(),
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,
+//                        todo.getName() + ": " +
+//                                todo.isDone(),
+//                        Toast.LENGTH_SHORT).show();
             }
         });
 

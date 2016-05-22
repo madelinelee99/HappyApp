@@ -15,10 +15,6 @@
             android:icon="@drawable/brightness"
             android:title="Weather of the Day" />
         <item
-            android:id="@+id/nav_recommended"
-            android:icon="@drawable/lightbulb"
-            android:title="Recommendation of the Day" />
-        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/emoticon"
             android:title="Profile" />

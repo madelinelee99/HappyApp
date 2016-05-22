@@ -97,11 +97,17 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
     private void cancelAlarm() {
-        if (alarmManager!= null) {
 //            pendingIntent = PendingIntent.getActivity(this, requestCode, )
-            alarmManager.cancel(pendingIntent);
-        }
-
+//            alarmManager.cancel(pendingIntent);
+//        Intent i = new Intent(AlarmActivity.this, WakeUpAlarmReceiver.class);
+//        PendingIntent pi = PendingIntent.getBroadcast(AlarmActivity.this,
+//                0, i, 0);
+//        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        am.cancel(pi);
+        Intent i = new Intent(getBaseContext(), WakeUpAlarmReceiver.class);
+        AlarmManager alarm = (AlarmManager) AlarmActivity.this.getSystemService(ALARM_SERVICE);
+        PendingIntent pending = PendingIntent.getActivity(AlarmActivity.this, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarm.cancel(pending);
     }
 
 }

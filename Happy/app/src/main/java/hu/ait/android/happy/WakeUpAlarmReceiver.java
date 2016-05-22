@@ -20,7 +20,7 @@ public class WakeUpAlarmReceiver extends WakefulBroadcastReceiver {
 //        AlarmActivity alarmInstance = AlarmActivity.instance();
 //        alarmInstance.setAlarmText("Time to meditate!");
 
-        Toast.makeText(context, "Time to meditate!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Time to meditate!", Toast.LENGTH_LONG).show();
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         if (alarmUri == null) {
             alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
