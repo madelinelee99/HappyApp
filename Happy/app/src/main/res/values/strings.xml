@@ -5,4 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="quote1Text">The best six doctors anywhere and no one can deny it are sunshine, water, rest, air, exercise and diet.</string>
+    <string name="quote2Text">No matter how much it gets abused, the body can restore balance. The first rule is to stop interfering with nature.</string>
+    <string name="quote3Text">The greatest wealth is health.</string>
+    <string name="quote4Text">There is no one giant step that does it. It’s a lot of little steps.</string>
+    <string name="quote5Text">I have chosen to be happy because it is good for my health.</string>
+    <string name="quote6Text">Health is a state of body. Wellness is a state of being.</string>
 </resources>

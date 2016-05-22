@@ -8,20 +8,38 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:id="@+id/lin_lay"
     tools:context="hu.ait.android.happy.SplashActivity">
 
-    <TextView
-        android:id="@+id/tvWelcome"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Welcome to Happy App!" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/inner_lay">
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Welcome to Happy App!"
+            android:textColor="#ff9999"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:maxWidth="50dp"
-        android:maxHeight="50dp" />
+        <ImageView
+            android:id="@+id/ivWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:maxWidth="60dp"
+            android:maxHeight="60dp"
+            android:padding="20dp"/>
+
+        <TextView
+            android:id="@+id/tvQuote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""/>
+    </LinearLayout>
+
 
 </LinearLayout>
