@@ -13,4 +13,25 @@
     <string name="txt_error_empty">This field can\'t be empty</string>
     <string name="btnDoneText">Done</string>
     <string name="btnAlarmCancel">Cancel</string>
+    <string name="happiness_badges">Happiness Badges</string>
+    <string name="healthy_lifestyle">Healthy Lifestyle</string>
+    <string name="great_social_life">Great Social Life</string>
+    <string name="avid_adventurer">Avid Adventurer</string>
+    <string name="profString">Profile</string>
+    <string name="weatherString">Weather of the Day</string>
+    <string name="reminderString">Reminders</string>
+    <string name="listString">Happy List</string>
+    <string name="forecastString">Weather Forecast</string>
+    <string name="questionString">What should I do depending on the weather?</string>
+    <string name="deleteString">Delete</string>
+    <string name="appMottoString">Helping make every day a little happier</string>
+    <string name="happyString">Happy</string>
+    <string name="nameString">Name</string>
+    <string name="dateString">Date</string>
+    <string name="LocationString">Location</string>
+    <string name="doneString">Done</string>
+    <string name="editString">Edit</string>
+    <string name="alarmOffString">Alarm off</string>
+    <string name="alarmOnString">Alarm on</string>
+    <string name="medRemindString">Set a meditation reminder</string>
 </resources>

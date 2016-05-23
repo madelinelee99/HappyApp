@@ -5,19 +5,19 @@
         <item
             android:id="@+id/nav_addItem"
             android:icon="@drawable/flower"
-            android:title="Happy List" />
+            android:title="@string/listString" />
         <item
             android:id="@+id/nav_alarm"
             android:icon="@drawable/clock"
-            android:title="Reminders" />
+            android:title="@string/reminderString" />
         <item
             android:id="@+id/nav_weather"
             android:icon="@drawable/brightness"
-            android:title="Weather of the Day" />
+            android:title="@string/weatherString" />
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/emoticon"
-            android:title="Profile" />
+            android:title="@string/profString" />
     </group>
 
 

@@ -28,6 +28,7 @@ public class AlarmActivity extends AppCompatActivity {
     private TimePicker alarmTimePicker;
     private static AlarmActivity alarmInstance;
     private TextView alarmTextView;
+    private TextView alarmWelcome;
     private Button btnAlarmDone;
     private Button btnAlarmCancel;
 
@@ -50,6 +51,7 @@ public class AlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm);
         alarmTimePicker = (TimePicker) findViewById(R.id.alarmTimePicker);
         alarmTextView = (TextView) findViewById(R.id.alarmText);
+        alarmWelcome = (TextView) findViewById(R.id.tvAlarmWelcome);
         ToggleButton alarmToggle = (ToggleButton) findViewById(R.id.alarmToggle);
         btnAlarmDone = (Button) findViewById(R.id.btnAlarmDone);
         btnAlarmCancel = (Button) findViewById(R.id.btnAlarmCancel);
@@ -58,6 +60,8 @@ public class AlarmActivity extends AppCompatActivity {
         Intent newIntent = new Intent(AlarmActivity.this, WakeUpAlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, newIntent, 0);
 
+        alarmWelcome.setText(R.string.medRemindString);
+
         btnAlarmDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,23 +69,29 @@ public class AlarmActivity extends AppCompatActivity {
             }
         });
 
+        //do not set an alarm unless you want it to never stop
         btnAlarmCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cancelAlarm();
-                finish();
+//                cancelAlarm();
+//                finish();
+                Intent i = new Intent(AlarmActivity.this, WakeUpAlarmReceiver.class);
+                PendingIntent pi = PendingIntent.getBroadcast(AlarmActivity.this,
+                        0, i, 0);
+                AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+                am.cancel(pi);
+
             }
         });
     }
 
     public void onToggleClicked(View view) {
         if (((ToggleButton) view).isChecked()) {
-           // Log.d("AlarmActivity", "Alarm On");
             setAlarm();
+            setAlarmText(getString(R.string.alarmOnString));
         } else {
             alarmManager.cancel(pendingIntent);
-            setAlarmText("");
-          //  Log.d("MyActivity", "Alarm Off");
+            setAlarmText(getString(R.string.alarmOffString));
         }
     }
 
@@ -97,6 +107,7 @@ public class AlarmActivity extends AppCompatActivity {
     }
 
     private void cancelAlarm() {
+
 //            pendingIntent = PendingIntent.getActivity(this, requestCode, )
 //            alarmManager.cancel(pendingIntent);
 //        Intent i = new Intent(AlarmActivity.this, WakeUpAlarmReceiver.class);

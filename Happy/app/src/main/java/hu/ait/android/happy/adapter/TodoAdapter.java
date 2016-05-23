@@ -29,6 +29,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>
     private List<Todo> todos = new ArrayList<Todo>();
     private int lastPosition = -1;
 
+
     public Todo getItem(int i) {
         return todos.get(i);
     }
@@ -81,6 +82,13 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>
         holder.icon.setImageResource(
                 todos.get(position).getItemType().getIconId());
 
+        holder.btnDeleteItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeTodo(position);
+            }
+        });
+
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,14 +103,18 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>
                 Todo todo = todos.get(position);
                 todo.setDone(holder.Status.isChecked());
 
+                todo.save();
+
+
                 // we will save/update todo object in the DataBase here
 
-//                Toast.makeText(context,
-//                        todo.getName() + ": " +
-//                                todo.isDone(),
-//                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,
+                        todo.getName() + ": " +
+                                todo.isDone(),
+                        Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
 
@@ -114,6 +126,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>
     }
 
     public void addTodo(Todo todo) {
+        todo.save();
         todos.add(0, todo);
 
         // ths refreshes the whole list
@@ -131,7 +144,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder>
     }
 
     public void removeTodo(int position) {
-        todos.remove(position).delete();
+        todos.get(position).delete();
         todos.remove(position);
         notifyItemRemoved(position);
     }

@@ -31,7 +31,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/nameString"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -40,7 +40,7 @@
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"
+                android:text="@string/dateString"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
@@ -48,7 +48,7 @@
                 android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location"
+                android:text="@string/LocationString"
                 android:textColor="#000000"/>
 
             <CheckBox
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:focusable="false"
-                android:text="Done" />
+                android:text="@string/doneString" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -67,14 +67,14 @@
                     android:id="@+id/btnDeleteItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Delete"
+                    android:text="@string/deleteString"
                     />
 
                 <Button
                     android:id="@+id/btnEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit" />
+                    android:text="@string/editString" />
             </LinearLayout>
 
         </LinearLayout>

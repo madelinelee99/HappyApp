@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -31,6 +30,15 @@ public class MainActivity extends AppCompatActivity
     private TodoAdapter todoRecyclerAdapter;
     private Todo itemToEditHolder;
     private int itemToEditPosition = -1;
+    private static final int HEALTHY = 0;
+    private static final int ADVENTURE = 1;
+    private static final int SOCIAL = 2;
+    private int adventureScore = 0;
+    private int socialScore = 0;
+    private int healthScore = 0;
+    private static final String AD_STRING = "ADVENTURE";
+    private static final String HEALTH_STRING = "HEALTH";
+    private static final String SOCIAL_STRING = "SOCIAL";
 
 
     @Override
@@ -105,6 +113,14 @@ public class MainActivity extends AppCompatActivity
         MainActivity.this.startActivity(intent);
     }
 
+    private void showBadgesActivity() {
+        Intent intent = new Intent(MainActivity.this, BadgesActivity.class);
+        intent.putExtra(SOCIAL_STRING, socialScore);
+        intent.putExtra(AD_STRING, adventureScore);
+        intent.putExtra(HEALTH_STRING, healthScore);
+        MainActivity.this.startActivity(intent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (resultCode) {
@@ -116,6 +132,16 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(MainActivity.this, "item added", Toast.LENGTH_SHORT).show();
 
                     todoRecyclerAdapter.addTodo(item);
+
+                    int cat = item.getItemType().getValue();
+
+                    if(cat == HEALTHY) {
+                        healthScore++;
+                    } if (cat == ADVENTURE) {
+                        adventureScore++;
+                    } if(cat == SOCIAL) {
+                        socialScore++;
+                    }
 
                 } else if (requestCode == REQUEST_CODE_EDIT_ITEM) {
                     Todo itemTemp = (Todo) data.getSerializableExtra(
@@ -189,8 +215,8 @@ public class MainActivity extends AppCompatActivity
             } else if (id == R.id.nav_weather) {
                 showWeatherActivity();
             } else if (id == R.id.nav_profile) {
-                //go to profile activity
-            }
+        showBadgesActivity();
+    }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
